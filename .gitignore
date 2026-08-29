@@ -1,0 +1,8 @@
+# Videos fuente: pesan cientos de MB y no hacen falta en el sitio publicado.
+# Guardalos aparte (disco externo, Drive) por si hay que volver a codificar.
+originales/
+
+# Respaldos locales de trabajo.
+# El Portafolio.html original se puede recuperar del historial de git.
+tools/Portafolio.original.html
+tools/perfil-orig.png
