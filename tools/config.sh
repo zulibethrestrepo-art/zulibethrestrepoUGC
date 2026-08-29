@@ -9,18 +9,18 @@ slot_name() { printf 'video-%s' "$1"; }
 
 slot_title() {
   case "$1" in
-    01) echo "Abib / Bloqueador Airy Sunstick" ;;
-    02) echo "Abib / Protectores solares" ;;
-    03) echo "Double Up Cream / Locion y tratamiento" ;;
-    04) echo "Rutina en duo / Piel luminosa" ;;
-    05) echo "Mascarilla facial de oro" ;;
-    06) echo "Limpieza facial profesional" ;;
-    07) echo "Maybelline / Mascara Sky High" ;;
-    08) echo "Brujeria Capilar / Mascarilla" ;;
-    09) echo "Unboxing YesStyle" ;;
-    10) echo "Unboxing / Rizador de cabello" ;;
-    11) echo "Unboxing sorpresa" ;;
-    12) echo "Feria de Belleza y Salud" ;;
+    01) echo "Feria de Belleza y Salud" ;;
+    02) echo "Abib / Bloqueador Airy Sunstick" ;;
+    03) echo "Abib / Protectores solares" ;;
+    04) echo "Double Up Cream / Locion y tratamiento" ;;
+    05) echo "Rutina en duo / Piel luminosa" ;;
+    06) echo "Mascarilla facial de oro" ;;
+    07) echo "Limpieza facial profesional" ;;
+    08) echo "Maybelline / Mascara Sky High" ;;
+    09) echo "Brujeria Capilar / Mascarilla" ;;
+    10) echo "Unboxing YesStyle" ;;
+    11) echo "Unboxing / Rizador de cabello" ;;
+    12) echo "Unboxing sorpresa" ;;
     13) echo "Panales Ekono Pants" ;;
     14) echo "Panitos humedos Farmatodo" ;;
     15) echo "Crema Almilpro" ;;

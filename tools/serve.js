@@ -29,19 +29,35 @@ http.createServer(function (req, res) {
     if (rango && /^bytes=\d*-\d*$/.test(rango)) {
       const p = rango.replace('bytes=', '').split('-');
       const ini = p[0] ? parseInt(p[0], 10) : 0;
-      const fin = p[1] ? parseInt(p[1], 10) : st.size - 1;
+      let fin = p[1] ? parseInt(p[1], 10) : st.size - 1;
+      if (fin >= st.size) fin = st.size - 1;
+      // Un rango que arranca en el final del archivo o mas alla no se puede
+      // satisfacer. Sin esto createReadStream lanza y tumba el servidor.
+      if (ini >= st.size || ini > fin) {
+        res.writeHead(416, { 'content-range': 'bytes */' + st.size }).end();
+        return;
+      }
       res.writeHead(206, {
         'content-type': tipo,
         'content-range': 'bytes ' + ini + '-' + fin + '/' + st.size,
         'accept-ranges': 'bytes',
         'content-length': fin - ini + 1,
       });
-      fs.createReadStream(file, { start: ini, end: fin }).pipe(res);
+      fs.createReadStream(file, { start: ini, end: fin })
+        .on('error', function () { res.destroy(); })
+        .pipe(res);
     } else {
       res.writeHead(200, { 'content-type': tipo, 'content-length': st.size, 'accept-ranges': 'bytes' });
-      fs.createReadStream(file).pipe(res);
+      fs.createReadStream(file)
+        .on('error', function () { res.destroy(); })
+        .pipe(res);
     }
   });
 }).listen(PORT, function () {
   console.log('Portafolio en http://localhost:' + PORT + '/Portafolio.html');
+});
+
+// Una peticion rara no deberia tumbar el servidor de revision.
+process.on('uncaughtException', function (e) {
+  console.log('aviso: ' + e.message);
 });

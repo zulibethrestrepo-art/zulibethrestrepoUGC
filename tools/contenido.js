@@ -5,18 +5,18 @@
 module.exports = {
   // Seccion 03 — Beauty & Lifestyle
   beauty: [
-    { id: 'vid-1',  num: '01', title: 'Abib / Bloqueador Airy Sunstick' },
-    { id: 'vid-2',  num: '02', title: 'Abib / Protectores solares' },
-    { id: 'vid-3',  num: '03', title: 'Double Up Cream / Loción y tratamiento' },
-    { id: 'vid-4',  num: '04', title: 'Rutina en dúo / Piel luminosa' },
-    { id: 'vid-5',  num: '05', title: 'Mascarilla facial de oro' },
-    { id: 'vid-6',  num: '06', title: 'Limpieza facial profesional' },
-    { id: 'vid-7',  num: '07', title: 'Maybelline / Máscara Sky High' },
-    { id: 'vid-8',  num: '08', title: 'Brujería Capilar / Mascarilla' },
-    { id: 'vid-9',  num: '09', title: 'Unboxing YesStyle' },
-    { id: 'vid-10', num: '10', title: 'Unboxing / Rizador de cabello' },
-    { id: 'vid-11', num: '11', title: 'Unboxing sorpresa' },
-    { id: 'vid-12', num: '12', title: 'Feria de Belleza y Salud' },
+    { id: 'vid-1',  num: '01', title: 'Feria de Belleza y Salud' },
+    { id: 'vid-2',  num: '02', title: 'Abib / Bloqueador Airy Sunstick' },
+    { id: 'vid-3',  num: '03', title: 'Abib / Protectores solares' },
+    { id: 'vid-4',  num: '04', title: 'Double Up Cream / Loción y tratamiento' },
+    { id: 'vid-5',  num: '05', title: 'Rutina en dúo / Piel luminosa' },
+    { id: 'vid-6',  num: '06', title: 'Mascarilla facial de oro' },
+    { id: 'vid-7',  num: '07', title: 'Limpieza facial profesional' },
+    { id: 'vid-8',  num: '08', title: 'Maybelline / Máscara Sky High' },
+    { id: 'vid-9',  num: '09', title: 'Brujería Capilar / Mascarilla' },
+    { id: 'vid-10', num: '10', title: 'Unboxing YesStyle' },
+    { id: 'vid-11', num: '11', title: 'Unboxing / Rizador de cabello' },
+    { id: 'vid-12', num: '12', title: 'Unboxing sorpresa' },
   ],
   // Seccion 04 — Productos para bebé (va de ultima)
   bebe: [
