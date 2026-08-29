@@ -11,12 +11,12 @@ MAXW=1080       # ancho maximo; no se hace upscale de fuentes menores
 MAXFPS=30
 
 slots=("$@")
-if [ ${#slots[@]} -eq 0 ]; then slots=(01 02 03 04 05 06 07 08 09 10 11 12 13 14); fi
+if [ ${#slots[@]} -eq 0 ]; then slots=(01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16); fi
 
 hechos=0; faltan=()
 for n in "${slots[@]}"; do
   name=$(slot_name "$n")
-  [ -z "$name" ] && { echo "  ! slot '$n' no valido"; continue; }
+  [ -z "$(slot_title "$n")" ] && { echo "  ! slot $n no valido"; continue; }
 
   src=""
   for ext in mp4 mov MP4 MOV m4v webm mkv avi; do

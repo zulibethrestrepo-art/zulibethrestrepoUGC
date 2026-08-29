@@ -84,46 +84,69 @@ if (fs.existsSync(PERFIL_OPT)) {
 function listado(nombre, filas) {
   const lineas = filas.map(function (v) {
     return "        { id: '" + v.id + "', num: '" + v.num + "', title: '" + v.title +
-      "', video: 'uploads/" + v.file + ".mp4', poster: 'posters/" + v.file + ".jpg' },";
+      "', video: 'uploads/video-" + v.num + ".mp4', poster: 'posters/video-" + v.num + ".jpg' },";
   });
   return NL + '      ' + nombre + ': [' + NL + lineas.join(NL) + NL + '      ],';
 }
+function regexLista(nombre) {
+  return new RegExp(NL + '      ' + nombre + ': \\[[^]*?' + NL + '      \\],');
+}
 function reemplazarLista(nombre, filas) {
-  const re = new RegExp(NL + '      ' + nombre + ': \\[[^]*?' + NL + '      \\],');
+  const re = regexLista(nombre);
   exigir(re.test(t), 'no se encontro el listado ' + nombre);
   t = t.replace(re, listado(nombre, filas));
 }
-reemplazarLista('videos', CONT.skincare);
+reemplazarLista('videos', CONT.beauty);
 reemplazarLista('moreVideos', CONT.bebe);
-reemplazarLista('extraVideos', CONT.beauty);
-console.log('Listados reescritos: skincare ' + CONT.skincare.length +
-  ', bebe ' + CONT.bebe.length + ', beauty ' + CONT.beauty.length);
+
+// extraVideos alimentaba la seccion "Mas videos", que ahora desaparece.
+const reExtra = regexLista('extraVideos');
+exigir(reExtra.test(t), 'no se encontro el listado extraVideos');
+t = t.replace(reExtra, '');
+console.log('Listados: Beauty & Lifestyle ' + CONT.beauty.length +
+  ', bebe ' + CONT.bebe.length + ' (extraVideos eliminado)');
 
 // ---------- 4. renombrar la seccion 05 y ajustar la navegacion ----------
 function cambiar(viejo, nuevo, que) {
   exigir(t.indexOf(viejo) >= 0, 'no se encontro ' + que);
   t = t.replace(viejo, nuevo);
 }
-cambiar('>05 — Más videos</span>',
-  '>05 — Beauty &amp; Lifestyle</span>', 'la etiqueta de la seccion 05');
-cambiar('>Más <em style="color:var(--acento,#c26a44)">videos</em></h2>',
-  '>Beauty &amp; <em style="color:var(--acento,#c26a44)">Lifestyle</em></h2>', 'el titulo de la seccion 05');
-cambiar('#videos" style="color:#5f544a;text-decoration:none">Videos</a>',
-  '#videos" style="color:#5f544a;text-decoration:none">Skincare</a>', 'el enlace de nav a Videos');
-cambiar('#mas-videos" style="color:#5f544a;text-decoration:none">Más videos</a>',
-  '#mas-videos" style="color:#5f544a;text-decoration:none">Beauty</a>', 'el enlace de nav a Mas videos');
-cambiar('<sc-for list="{{ extraVideos }}" as="e" hint-placeholder-count="4">',
-  '<sc-for list="{{ extraVideos }}" as="e" hint-placeholder-count="6">', 'el contador de la seccion 05');
+// La antigua seccion "Skincare" pasa a ser la unica de video: "Beauty &
+// Lifestyle", con los 12. Al borrar la de "Mas videos", la de bebe queda
+// de ultima, que es donde debe ir.
+cambiar('>03 — Videos UGC</span>',
+  '>03 — Beauty &amp; Lifestyle</span>', 'la etiqueta de la seccion 03');
+cambiar('><em style="color:var(--acento,#c26a44)">Skincare</em></h2>',
+  '>Beauty &amp; <em style="color:var(--acento,#c26a44)">Lifestyle</em></h2>', 'el titulo de la seccion 03');
+cambiar('<sc-for list="{{ videos }}" as="v" hint-placeholder-count="4">',
+  '<sc-for list="{{ videos }}" as="v" hint-placeholder-count="12">', 'el contador de la seccion 03');
 
-// La reja de la seccion 05 pasa a 3 columnas: con 6 videos quedan dos filas
-// parejas de 3, en vez de una de 4 y otra de 2 a medio llenar.
-const REJA = 'grid-template-columns:repeat(4,1fr)';
-const marca = t.indexOf('{{ extraVideos }}');
-exigir(marca > 0, 'no se ubico la seccion 05');
-const posReja = t.lastIndexOf(REJA, marca);
-exigir(posReja > 0, 'no se ubico la reja de la seccion 05');
-t = t.slice(0, posReja) + 'grid-template-columns:repeat(3,1fr)' + t.slice(posReja + REJA.length);
-console.log('Seccion 05: renombrada a "Beauty & Lifestyle", ampliada a 6 videos en reja de 3');
+// Borrar la seccion "Mas videos" completa, con su comentario.
+const COMENTARIO = '<!-- ============ MÁS VIDEOS ============ -->';
+const iniSec = t.indexOf(COMENTARIO);
+exigir(iniSec >= 0, 'no se encontro el comentario de la seccion 05');
+const cierreSec = t.indexOf('</section>', t.indexOf('<section id="mas-videos"', iniSec));
+exigir(cierreSec > iniSec, 'no se encontro el cierre de la seccion 05');
+// El texto anterior ya termina con el salto y la sangria del comentario
+// siguiente, asi que se recorta el espacio sobrante del resto.
+t = t.slice(0, iniSec) + t.slice(cierreSec + '</section>'.length).replace(/^\s*/, '');
+exigir(t.indexOf('mas-videos') < 0 || t.indexOf('<section id="mas-videos"') < 0,
+  'quedaron restos de la seccion 05');
+// Al desaparecer la 05, las siguientes se corren para que no quede un hueco
+// en la numeracion (iba 01, 02, 03, 04, 06...).
+[['06 — Estadísticas', '05 — Estadísticas'],
+ ['07 — Tarifas', '06 — Tarifas'],
+ ['08 — Contacto', '07 — Contacto']].forEach(function (par) {
+  cambiar('>' + par[0] + '<', '>' + par[1] + '<', 'la etiqueta "' + par[0] + '"');
+});
+console.log('Seccion "Mas videos": eliminada; secciones renumeradas 01-07');
+
+// Navegacion: un solo enlace de video, y bebe queda de ultimo.
+cambiar('#videos" style="color:#5f544a;text-decoration:none">Videos</a>',
+  '#videos" style="color:#5f544a;text-decoration:none">Beauty</a>', 'el enlace de nav a Videos');
+cambiar(NL + '      <a href="#mas-videos" style="color:#5f544a;text-decoration:none">Más videos</a>',
+  '', 'el enlace de nav a Mas videos');
+console.log('Navegacion: "Beauty" y "Bebé", sin "Más videos"');
 
 // ---------- 5. poster en las etiquetas <video> y descarga diferida ----------
 // El video y la portada viajan en data-src / data-poster, no en src / poster.
@@ -138,7 +161,8 @@ t = t.replace(/src="\{\{ ([vme])\.video \}\}"/g, function (m, k) {
 });
 const preloads = (t.match(/preload="metadata"/g) || []).length;
 t = t.replace(/preload="metadata"/g, 'preload="none"');
-exigir(tags === 3 && preloads === 3, 'etiquetas <video> inesperadas (' + tags + '/' + preloads + ')');
+// Dos etiquetas: la de "Beauty & Lifestyle" y la de "Productos para bebe".
+exigir(tags === 2 && preloads === 2, 'etiquetas <video> inesperadas (' + tags + '/' + preloads + ')');
 console.log('Etiquetas <video> con poster: ' + tags + ' | preload diferido: ' + preloads);
 
 // ---------- 6. script de carga diferida ----------
