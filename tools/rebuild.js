@@ -81,9 +81,14 @@ if (fs.existsSync(PERFIL_OPT)) {
 }
 
 // ---------- 3. reescribir los listados de video ----------
+// Los titulos se escriben dentro de comillas simples en el JS de la pagina,
+// asi que un apostrofo (Johnson's) romperia el archivo si no se escapa.
+function comillaSimple(s) {
+  return String(s).replace(/\\/g, BARRA + BARRA).replace(/'/g, BARRA + "'");
+}
 function listado(nombre, filas) {
   const lineas = filas.map(function (v) {
-    return "        { id: '" + v.id + "', num: '" + v.num + "', title: '" + v.title +
+    return "        { id: '" + v.id + "', num: '" + v.num + "', title: '" + comillaSimple(v.title) +
       "', video: 'uploads/video-" + v.num + ".mp4', poster: 'posters/video-" + v.num + ".jpg' },";
   });
   return NL + '      ' + nombre + ': [' + NL + lineas.join(NL) + NL + '      ],';
@@ -106,11 +111,35 @@ t = t.replace(reExtra, '');
 console.log('Listados: Beauty & Lifestyle ' + CONT.beauty.length +
   ', bebe ' + CONT.bebe.length + ' (extraVideos eliminado)');
 
-// ---------- 4. renombrar la seccion 05 y ajustar la navegacion ----------
 function cambiar(viejo, nuevo, que) {
   exigir(t.indexOf(viejo) >= 0, 'no se encontro ' + que);
   t = t.replace(viejo, nuevo);
 }
+
+// ---------- 3b. estadisticas ----------
+// El portafolio traia barras de sexo/ciudades/paises con datos viejos. Se
+// reemplazan por el resumen de cifras del media kit, que salen de las
+// analiticas nativas de TikTok e Instagram.
+const EST = path.join(ROOT, 'tools', 'estadisticas.html');
+if (fs.existsSync(EST)) {
+  const iniEst = t.indexOf('<section id="estadisticas"');
+  exigir(iniEst >= 0, 'no se encontro la seccion de estadisticas');
+  const finEst = t.indexOf('</section>', iniEst) + '</section>'.length;
+  const nuevo = fs.readFileSync(EST, 'utf8')
+    .replace(/^<!--[^]*?-->\s*/, '')   // quitar el comentario de cabecera
+    .trimEnd();
+  t = t.slice(0, iniEst) + nuevo + t.slice(finEst);
+
+  // Los tres arreglos de barras quedan sin uso.
+  ['sexo', 'ciudades', 'paises'].forEach(function (k) {
+    const re = regexLista(k);
+    exigir(re.test(t), 'no se encontro el listado ' + k);
+    t = t.replace(re, '');
+  });
+  console.log('Estadisticas: resumen del media kit (sexo/ciudades/paises eliminados)');
+}
+
+// ---------- 4. renombrar la seccion 03 y ajustar la navegacion ----------
 // La antigua seccion "Skincare" pasa a ser la unica de video: "Beauty &
 // Lifestyle", con los 12. Al borrar la de "Mas videos", la de bebe queda
 // de ultima, que es donde debe ir.

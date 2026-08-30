@@ -34,6 +34,13 @@ archivo: el 07 vive en `uploads/video-07.mp4` y `posters/video-07.jpg`.
 Ver `originales/LEEME.txt`. En resumen: copia el original como `NN.mp4`,
 corre `bash tools/encode.sh NN` y publica con git.
 
+## Cambiar las estadisticas
+
+Las cifras de la seccion "En numeros" viven en `tools/estadisticas.html`.
+Salen del media kit (<https://zulibethrestrepo-art.github.io/zulibethrestrepoUGC/MediaKit.html>),
+que a su vez las toma de las analiticas nativas de TikTok e Instagram.
+Editalas ahi y corre `node tools/rebuild.js`.
+
 ## Cambiar un titulo o reordenar
 
 Los titulos y el orden viven en `tools/contenido.js`. Editalos y corre:

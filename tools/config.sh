@@ -22,8 +22,8 @@ slot_title() {
     11) echo "Unboxing / Epii" ;;
     12) echo "Unboxing sorpresa" ;;
     13) echo "Panales Ekono Pants" ;;
-    14) echo "Panitos humedos Farmatodo" ;;
-    15) echo "Crema Almilpro" ;;
+    14) echo "Johnsons baby / Shampoo" ;;
+    15) echo "Almipro / Unguento" ;;
     16) echo "Panales Huggies DermaCare" ;;
     *) echo "" ;;
   esac

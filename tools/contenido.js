@@ -21,8 +21,8 @@ module.exports = {
   // Seccion 04 — Productos para bebé (va de ultima)
   bebe: [
     { id: 'bebe-1', num: '13', title: 'Pañales Ekono Pants' },
-    { id: 'bebe-2', num: '14', title: 'Pañitos húmedos Farmatodo' },
-    { id: 'bebe-3', num: '15', title: 'Crema Almilpro' },
+    { id: 'bebe-2', num: '14', title: "Johnson's baby / Shampoo" },
+    { id: 'bebe-3', num: '15', title: 'Almipro / Ungüento' },
     { id: 'bebe-4', num: '16', title: 'Pañales Huggies DermaCare' },
   ],
 };
