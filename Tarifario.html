@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tarifario UGC de Zulibeth Restrepo, creadora de contenido en Colombia: videos, historias, carruseles, packs y derechos de pauta.">
+<title>Zulibeth Restrepo · Tarifario UGC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+  html{-webkit-text-size-adjust:100%}
+
+  :root{
+    color-scheme: light;
+    --lavanda:#ece7f6;
+    --lavanda-2:#e2daf0;
+    --morado:#2a1d3f;
+    --morado-card:#3a2a55;
+    --lila:#c8a8e0;
+    --tinta:#332a22;
+    --mute:#5f544a;
+    --mute-2:#8a7c6a;
+    --terra:#c26a44;
+    --terra-claro:#e0a882;
+    --crema:#f5ede1;
+    --texto-oscuro:#f3edfa;
+    --texto-oscuro-2:#c3b6d9;
+    --texto-oscuro-3:#cbbdad;
+    --linea:rgba(51,42,34,.12);
+    --linea-clara:rgba(240,231,219,.18);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--lavanda);
+    color:var(--tinta);
+    font-family:'Jost',system-ui,-apple-system,sans-serif;
+    font-weight:400;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--terra)}
+  a:hover{color:#9a4f30}
+  a:focus-visible{outline:2px solid var(--terra);outline-offset:3px;border-radius:4px}
+  h1,h2,h3{font-family:'Instrument Serif',Georgia,serif;font-weight:400;text-wrap:balance;margin:0}
+  em{font-style:italic}
+  .num{font-variant-numeric:tabular-nums}
+
+  @keyframes floatUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important}
+  }
+
+  /* ---------- estructura ---------- */
+  .wrap{max-width:1180px;margin:0 auto;padding:96px 40px}
+  .oscuro{background:var(--morado);color:#e6dcf3}
+  .banda{background:var(--lavanda-2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+
+  .eyebrow{font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--terra);display:block}
+  .oscuro .eyebrow{color:var(--lila)}
+  h2{margin:18px 0 0;font-size:52px;line-height:1.02}
+  .oscuro h2{color:var(--texto-oscuro)}
+  h2 em{color:var(--terra)}
+  .oscuro h2 em{color:var(--lila)}
+  .lead{margin:16px 0 0;font-size:17px;line-height:1.7;color:var(--mute);max-width:62ch}
+  .oscuro .lead{color:var(--texto-oscuro-2)}
+
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+      padding:16px 40px;background:rgba(236,231,246,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(51,42,34,.1)}
+  .marca{font-family:'Instrument Serif',Georgia,serif;font-size:24px;color:var(--tinta);text-decoration:none;letter-spacing:.01em}
+  .m-nav{display:flex;gap:26px;align-items:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .m-nav a{color:var(--mute);text-decoration:none}
+  .m-nav a:hover{color:var(--tinta)}
+  .m-nav a.pill{padding:9px 18px;background:var(--tinta);color:var(--crema);border-radius:40px}
+  .m-nav a.pill:hover{color:var(--crema);background:#241d17}
+
+  /* ---------- hero ---------- */
+  header{position:relative;max-width:1180px;margin:0 auto;padding:70px 40px 56px;text-align:center}
+  .kicker{display:flex;align-items:center;justify-content:center;gap:12px}
+  .kicker span:first-child,.kicker span:last-child{width:44px;height:1px;background:var(--terra)}
+  .saludo{margin:30px 0 0;font-size:14px;letter-spacing:.42em;text-transform:uppercase;color:var(--mute-2)}
+  h1{margin:8px 0 0;font-size:clamp(52px,8vw,104px);line-height:.9;letter-spacing:-.015em;animation:floatUp .8s ease both}
+  h1 em{color:var(--terra)}
+  .rol{margin:24px 0 0;font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+
+  .categorias{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 0;margin:34px auto 0;max-width:760px;
+              padding:14px 26px;background:var(--lavanda-2);border:1px solid var(--linea);border-radius:40px;
+              font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta)}
+  .categorias span{padding:0 16px;position:relative}
+  .categorias span+span::before{content:"";position:absolute;left:0;top:50%;width:4px;height:4px;
+                                margin-top:-2px;border-radius:50%;background:var(--terra)}
+
+  /* ---------- cifras del hero ---------- */
+  .cifras-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:34px auto 0;max-width:760px;
+               background:var(--linea);border:1px solid var(--linea);border-radius:14px;overflow:hidden}
+  .cifras-mini > div{background:#f4f0fb;padding:22px 18px}
+  .cifras-mini .n{font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1;color:var(--terra)}
+  .cifras-mini .l{margin-top:8px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+
+  /* ---------- tabla de tarifas ---------- */
+  .tabla{margin-top:48px;border:1px solid var(--linea);border-radius:14px;overflow:hidden;
+         box-shadow:0 18px 44px rgba(51,42,34,.08)}
+  .t-head{display:grid;grid-template-columns:1fr 220px;gap:24px;padding:18px 30px;background:var(--lavanda-2);
+          font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+  .t-head span:last-child{text-align:right}
+  .tarifa{display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:center;
+          padding:24px 30px;background:#faf8fd;border-top:1px solid var(--linea)}
+  .tarifa:nth-child(odd){background:#f4f0fb}
+  .t-nombre{font-size:14.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta);line-height:1.35}
+  .t-desc{margin:7px 0 0;font-size:13.5px;line-height:1.55;color:var(--mute)}
+  .t-precio{text-align:right}
+  .t-precio .p{font-family:'Instrument Serif',Georgia,serif;font-size:31px;line-height:1;color:var(--terra)}
+  .t-precio .cop{margin-left:5px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.12em;color:var(--mute-2)}
+  .t-ahorro{margin-top:7px;display:inline-block;padding:3px 10px;border-radius:20px;
+            background:rgba(194,106,68,.12);border:1px solid rgba(194,106,68,.28);
+            font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--terra)}
+
+  /* ---------- notas ---------- */
+  .notas{margin-top:44px;padding:34px 32px;border-radius:14px;background:#f4f0fb;border:1px solid var(--linea)}
+  .notas h3{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+            color:var(--terra);margin:0 0 20px}
+  .notas ul{margin:0;padding-left:20px}
+  .notas li{margin-bottom:11px;font-size:14.5px;line-height:1.65;color:var(--mute)}
+  .notas li:last-child{margin-bottom:0}
+  .notas li strong{color:var(--tinta);font-weight:500}
+
+  /* ---------- pie ---------- */
+  footer .wrap{padding:100px 40px 70px;text-align:center}
+  footer .eyebrow{color:var(--terra-claro)}
+  footer h2{margin:20px 0 0;font-size:clamp(52px,7vw,88px);line-height:.98;color:var(--crema)}
+  footer h2 em{color:var(--terra-claro)}
+  footer .lead{margin:22px auto 0;color:var(--texto-oscuro-3);text-align:center;max-width:52ch}
+  .mail{display:inline-block;margin-top:36px;font-family:'Instrument Serif',Georgia,serif;
+        font-size:clamp(24px,3.5vw,40px);color:var(--crema);text-decoration:none;
+        border-bottom:1px solid var(--terra-claro);padding-bottom:6px}
+  .mail:hover{color:var(--terra-claro)}
+  .redes-pie{display:flex;gap:14px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+  .redes-pie a{padding:14px 30px;border:1px solid rgba(240,231,219,.4);border-radius:40px;font-size:12px;
+               letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#f0e7db}
+  .redes-pie a.solido{background:var(--terra-claro);color:var(--tinta);border-color:var(--terra-claro)}
+  .redes-pie a:hover{background:var(--terra-claro);color:var(--tinta);border-color:var(--terra-claro)}
+  .cierre{margin-top:80px;padding-top:28px;border-top:1px solid rgba(240,231,219,.14);display:flex;
+          justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:11px;letter-spacing:.16em;
+          text-transform:uppercase;color:#9a8d80}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:820px){
+    nav{padding:12px 20px}
+    .m-nav{gap:14px;flex-wrap:wrap;justify-content:flex-end;font-size:10.5px}
+    header{padding:36px 22px 30px}
+    .wrap{padding:64px 22px}
+    h2{font-size:38px}
+    .categorias{border-radius:14px;gap:8px 0}
+    .t-head{display:none}
+    .tarifa{grid-template-columns:1fr;gap:12px;padding:22px 22px}
+    .t-precio{text-align:left}
+    .notas{padding:28px 22px}
+  }
+  @media (max-width:480px){
+    .m-nav{gap:10px;font-size:10px}
+    .cifras-mini{grid-template-columns:1fr}
+    h1{font-size:clamp(44px,14vw,60px)}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="marca" href="#inicio">Zulibeth Restrepo</a>
+  <div class="m-nav">
+    <a href="#tarifas">Tarifas</a>
+    <a href="#notas">Condiciones</a>
+    <a href="Portafolio.html">Portafolio</a>
+    <a href="MediaKit.html">Media kit</a>
+    <a class="pill" href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<header id="inicio">
+  <div class="kicker"><span></span><span class="eyebrow">Tarifario 2026</span><span></span></div>
+  <p class="saludo">Creadora de contenido</p>
+  <h1>Tarifario <em>UGC</em></h1>
+  <p class="rol">Zulibeth Restrepo · Colombia</p>
+
+  <div class="categorias">
+    <span>Lifestyle</span><span>Beauty</span><span>Skincare</span><span>Maternidad</span><span>Hogar</span>
+  </div>
+
+  <div class="cifras-mini">
+    <div>
+      <div class="n num">2.841</div>
+      <div class="l">Seguidores</div>
+    </div>
+    <div>
+      <div class="n num">159.418</div>
+      <div class="l">Visualizaciones</div>
+    </div>
+    <div>
+      <div class="n num">+163%</div>
+      <div class="l">Crecimiento en TikTok</div>
+    </div>
+  </div>
+</header>
+
+<section class="wrap" id="tarifas" style="padding-top:24px">
+  <div style="text-align:center">
+    <span class="eyebrow">01 — Servicios</span>
+    <h2>Qué puedo <em>crear</em> para ti</h2>
+    <p class="lead" style="margin-left:auto;margin-right:auto;text-align:center">Todo el contenido se entrega en formato vertical 9:16, editado y listo para publicar en tus redes o usar como anuncio.</p>
+  </div>
+
+  <div class="tabla">
+    <div class="t-head"><span>Servicio</span><span>Tarifa (COP)</span></div>
+
+    <div class="tarifa">
+      <div>
+        <div class="t-nombre">1 video UGC sin publicación</div>
+        <p class="t-desc">Entrega del video para que la marca lo use en sus propias redes.</p>
+      </div>
+      <div class="t-precio"><span class="p num">$100.000</span></div>
+    </div>
+
+    <div class="tarifa">
+      <div>
+        <div class="t-nombre">Video publicado en mi perfil</div>
+        <p class="t-desc">Publicación en feed o reel de mis cuentas.</p>
+      </div>
+      <div class="t-precio"><span class="p num">$120.000</span></div>
+    </div>
+
+    <div class="tarifa">
+      <div>
+        <div class="t-nombre">Video en colaboración</div>
+        <p class="t-desc">Publicación en colaboración con la marca, visible en ambos perfiles.</p>
+      </div>
+      <div class="t-precio"><span class="p num">$150.000</span></div>
+    </div>
+
+    <div class="tarifa">
+      <div>
+        <div class="t-nombre">Video + derechos de pauta 30 días</div>
+        <p class="t-desc">Incluye el uso del video para anuncios durante 30 días en una plataforma.</p>
+      </div>
+      <div class="t-precio"><span class="p num">$250.000</span></div>
+    </div>
+
+    <div class="tarifa">
+      <div>
+        <div class="t-nombre">Extensión de pauta +30 días</div>
+        <p class="t-desc">Amplía los derechos de uso publicitario por 30 días más.</p>
+      </div>
+      <div class="t-precio"><span class="p num">+$100.000</span></div>
+    </div>
+
+    <div class="tarifa">
+      <div>
+        <div class="t-nombre">1 historia</div>
+        <p class="t-desc">Una historia en Instagram.</p>
+      </div>
+      <div class="t-precio"><span class="p num">$50.000</span></div>
+    </div>
+
+    <div class="tarifa">
+      <div>
+        <div class="t-nombre">Pack 3 historias</div>
+        <p class="t-desc">Tres historias en Instagram.</p>
+      </div>
+      <div class="t-precio">
+        <span class="p num">$120.000</span>
+        <div class="t-ahorro">Ahorras $30.000</div>
+      </div>
+    </div>
+
+    <div class="tarifa">
+      <div>
+        <div class="t-nombre">Carrusel / publicación de fotos</div>
+        <p class="t-desc">Publicación en feed, en carrusel o foto única, con edición incluida.</p>
+      </div>
+      <div class="t-precio"><span class="p num">$100.000</span></div>
+    </div>
+
+    <div class="tarifa">
+      <div>
+        <div class="t-nombre">Pack 3 videos UGC sin publicación</div>
+        <p class="t-desc">Entrega de tres videos para que la marca los use en sus redes.</p>
+      </div>
+      <div class="t-precio">
+        <span class="p num">$230.000</span>
+        <div class="t-ahorro">Ahorras $70.000</div>
+      </div>
+    </div>
+
+    <div class="tarifa">
+      <div>
+        <div class="t-nombre">Pack 3 videos en colaboración</div>
+        <p class="t-desc">Tres videos publicados en colaboración con la marca.</p>
+      </div>
+      <div class="t-precio">
+        <span class="p num">$380.000</span>
+        <div class="t-ahorro">Ahorras $70.000</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notas" id="notas">
+    <h3>Condiciones</h3>
+    <ul>
+      <li>Los precios <strong>no incluyen IVA</strong>.</li>
+      <li>Los videos son de <strong>15 a 60 segundos</strong>.</li>
+      <li>Incluye <strong>una ronda de ajustes</strong>.</li>
+      <li>Los derechos de pauta aplican únicamente por el tiempo acordado.</li>
+      <li>Para campañas con exclusividad, uso en múltiples plataformas, uso prolongado de imagen o múltiples entregas, se realiza <strong>cotización personalizada</strong>.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="oscuro" id="contacto">
+  <div class="wrap">
+    <span class="eyebrow">02 — Contacto</span>
+    <h2>Hagamos <em>magia juntos</em></h2>
+    <p class="lead">Cuéntame qué producto quieres mostrar, cuántas piezas necesitas y dónde piensas publicarlas, y te envío una propuesta a la medida.</p>
+    <a class="mail" href="mailto:zulibethrestrepo@gmail.com">zulibethrestrepo@gmail.com</a>
+    <div class="redes-pie">
+      <a href="https://www.instagram.com/zulibethrestrepo14/" target="_blank" rel="noopener">Instagram @zulibethrestrepo14</a>
+      <a class="solido" href="https://www.tiktok.com/@zulibethrestrepougc" target="_blank" rel="noopener">TikTok @zulibethrestrepougc</a>
+      <a href="Portafolio.html">Ver portafolio</a>
+      <a href="MediaKit.html">Ver media kit</a>
+    </div>
+    <div class="cierre">
+      <span>Zulibeth Restrepo · Creadora UGC</span>
+      <span>Tarifario 2026 · Precios en pesos colombianos</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
