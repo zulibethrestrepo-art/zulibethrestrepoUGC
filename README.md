@@ -3,8 +3,13 @@
 Sitio publicado en
 <https://zulibethrestrepo-art.github.io/zulibethrestrepoUGC/Portafolio.html>
 
+Media kit en
+<https://zulibethrestrepo-art.github.io/zulibethrestrepoUGC/MediaKit.html>
+
 ## Como esta armado
 
+- `MediaKit.html` — el media kit para marcas (~0,22 MB). Archivo autonomo:
+  lleva la foto incrustada y toma las tipografias de Google Fonts.
 - `Portafolio.html` — la pagina (~0,5 MB). Antes pesaba 18,78 MB porque
   llevaba los videos incrustados en base64; eso obligaba a comprimirlos
   hasta 121–445 kbps y por eso se veian mal.
