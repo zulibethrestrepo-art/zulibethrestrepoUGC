@@ -23,7 +23,7 @@ Media kit en
 
 | Seccion | Slots | Videos |
 |---------|-------|--------|
-| Beauty & Lifestyle | 01–12 | 12 |
+| Beauty y Skin Care | 01–12 | 12 |
 | Productos para bebe | 13–16 | 4 |
 
 El numero del slot es el que se ve en la pagina y tambien el nombre del

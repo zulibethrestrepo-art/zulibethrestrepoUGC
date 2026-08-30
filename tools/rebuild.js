@@ -1,8 +1,10 @@
 /*
  * Reconstruye Portafolio.html a partir del bundle original:
  *  - saca del HTML los 12 videos que venian incrustados en base64
- *  - reescribe los tres listados de video segun tools/contenido.js
- *  - amplia "Beauty & Lifestyle" a 6 videos y renombra esa seccion
+ *  - reescribe los listados de video segun tools/contenido.js
+ *  - funde las dos secciones de video en "Beauty y Skin Care" (12 videos) y
+ *    deja "Productos para bebe" de ultima
+ *  - reemplaza las estadisticas por el resumen de tools/estadisticas.html
  *  - agrega portada (poster) a cada video
  *  - inyecta tools/lazy.js para que solo se descargue lo que esta a la vista
  *  - reemplaza la foto de perfil PNG por la JPEG optimizada
@@ -108,7 +110,7 @@ reemplazarLista('moreVideos', CONT.bebe);
 const reExtra = regexLista('extraVideos');
 exigir(reExtra.test(t), 'no se encontro el listado extraVideos');
 t = t.replace(reExtra, '');
-console.log('Listados: Beauty & Lifestyle ' + CONT.beauty.length +
+console.log('Listados: Beauty y Skin Care ' + CONT.beauty.length +
   ', bebe ' + CONT.bebe.length + ' (extraVideos eliminado)');
 
 function cambiar(viejo, nuevo, que) {
@@ -140,13 +142,13 @@ if (fs.existsSync(EST)) {
 }
 
 // ---------- 4. renombrar la seccion 03 y ajustar la navegacion ----------
-// La antigua seccion "Skincare" pasa a ser la unica de video: "Beauty &
-// Lifestyle", con los 12. Al borrar la de "Mas videos", la de bebe queda
+// La antigua seccion "Skincare" pasa a ser la unica de video: "Beauty y
+// Skin Care", con los 12. Al borrar la de "Mas videos", la de bebe queda
 // de ultima, que es donde debe ir.
 cambiar('>03 — Videos UGC</span>',
-  '>03 — Beauty &amp; Lifestyle</span>', 'la etiqueta de la seccion 03');
+  '>03 — Beauty y Skin Care</span>', 'la etiqueta de la seccion 03');
 cambiar('><em style="color:var(--acento,#c26a44)">Skincare</em></h2>',
-  '>Beauty &amp; <em style="color:var(--acento,#c26a44)">Lifestyle</em></h2>', 'el titulo de la seccion 03');
+  '>Beauty y <em style="color:var(--acento,#c26a44)">Skin Care</em></h2>', 'el titulo de la seccion 03');
 cambiar('<sc-for list="{{ videos }}" as="v" hint-placeholder-count="4">',
   '<sc-for list="{{ videos }}" as="v" hint-placeholder-count="12">', 'el contador de la seccion 03');
 

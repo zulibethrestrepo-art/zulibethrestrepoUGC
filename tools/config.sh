@@ -22,9 +22,9 @@ slot_title() {
     11) echo "Unboxing / Epii" ;;
     12) echo "Unboxing sorpresa" ;;
     13) echo "Panales Ekono Pants" ;;
-    14) echo "Johnsons baby / Shampoo" ;;
+    14) echo "Panales Huggies DermaCare" ;;
     15) echo "Almipro / Unguento" ;;
-    16) echo "Panales Huggies DermaCare" ;;
+    16) echo "Johnsons baby / Shampoo" ;;
     *) echo "" ;;
   esac
 }
